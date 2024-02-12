@@ -55,13 +55,15 @@ class FileStorage():
         (only if the JSON file (__file_path) exists ; otherwise, do nothing.
         If the file doesn’t exist, no exception should be raised)
         """
-        file = FileStorage.__file_path
-        objects = FileStorage.__objects
-        try:
-            with open(file, 'r') as f:
-                object = json.load(f)
-            for key, value in object.items():
-                obj = BaseModel(**value)
-                objects[key] = obj
-        except:
+        def reload(self):
+        if os.path.exists(self.__file_path) and os.path.getsize(self.__file_path) != 0:
+            with open(self.__file_path, "r") as jsonfile2:
+                data = json.load(jsonfile2)
+                if type(data) == type(dict()):
+                    for key, value in data.items():
+                        obj = BaseModel(**value)
+                        self.__objects[key] = obj
+                else:
+                    pass
+        else:
             pass
