@@ -12,7 +12,7 @@ import models
 
 class BaseModel():
     """
-    This class defines all attributes/methods 
+    This class defines all attributes/methods
     for other classes
     """
 
@@ -44,7 +44,8 @@ class BaseModel():
         this string magic functions writes out the
         string to be printed when printing the object
         """
-        return "[{}] ({}) <{}>".format(self.__class__.__name__, self.id, self.__dict__)
+        return "[{}] ({}) <{}>".format(self.__class__.__name__,
+                                       self.id, self.__dict__)
 
     def save(self):
         """
