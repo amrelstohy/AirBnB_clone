@@ -34,7 +34,7 @@ class FileStorage():
         obj -> the object to be stored in __obects
         """
 
-        key_format = '<{}>.{}'.format(obj.__class__.__name__, obj.id)
+        key_format = '{}.{}'.format(obj.__class__.__name__, obj.id)
         FileStorage.__objects[key_format] = obj
 
     def save(self):
