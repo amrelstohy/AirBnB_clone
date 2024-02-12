@@ -58,7 +58,7 @@ class FileStorage():
         """
         def reload(self):
             if os.path.exists(self.__file_path) and
-            os.path.getsize(self.__file_path) != 0:
+                os.path.getsize(self.__file_path) != 0:
                 with open(self.__file_path, "r") as jsonfile2:
                     data = json.load(jsonfile2)
                     if isinstance(data, dict):
