@@ -58,11 +58,11 @@ class FileStorage():
         """
         file = FileStorage.__file_path
         objects = FileStorage.__objects
-        try :
+        try:
             with open(file, 'r') as f:
                 object = json.load(f)
             for key, value in object.items():
                 obj = BaseModel(**value)
                 objects[key] = obj
-        except :
+        except:
             pass
