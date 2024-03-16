@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 
-import engine.file_storage
+from .engine import file_storage
 
-storage = engine.file_storage.FileStorage()
+storage = file_storage.FileStorage()
 storage.reload()
