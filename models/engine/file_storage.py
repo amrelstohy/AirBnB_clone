@@ -56,8 +56,8 @@ class FileStorage():
         (only if the JSON file (__file_path) exists ; otherwise, do nothing.
         If the file doesn’t exist, no exception should be raised)
         """
-        if os.path.exists(self.__file_path) and
-                os.path.getsize(self.__file_path) != 0:
+        if (os.path.exists(self.__file_path) and
+                os.path.getsize(self.__file_path) != 0):
             with open(self.__file_path, "r") as jsonfile2:
                 data = json.load(jsonfile2)
                 if isinstance(data, dict):
