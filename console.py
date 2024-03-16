@@ -4,6 +4,7 @@ console module
 """
 import cmd
 
+
 class HBNBCommand(cmd.Cmd):
 
     """
@@ -18,7 +19,6 @@ class HBNBCommand(cmd.Cmd):
     def do_EOF(self, line):
         """EOF command to exit the program"""
         return True
-    
    
     def emptyline(self):
         """empty line function"""
