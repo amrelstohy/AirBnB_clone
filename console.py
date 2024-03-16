@@ -37,11 +37,11 @@ class HBNBCommand(cmd.Cmd):
             print(x.id)
         elif (args[0] == ''):
             print("** class name missing **")
-        else :
+        else:
             print("** class doesn't exist **")
 
     def do_show(self, line):
-        """Prints the string representation of an instance based on the class name and id"""
+        """Prints the string representation of an instance"""
 
         a = 0
         args = line.split()
@@ -50,7 +50,7 @@ class HBNBCommand(cmd.Cmd):
         elif (len(args) == 1):
             if (args[0] == "BaseModel"):
                 print("** instance id missing **")
-            else :
+            else:
                 print("** class doesn't exist **")
         elif (len(args) > 1):
             if (args[0] == "BaseModel"):
@@ -61,14 +61,14 @@ class HBNBCommand(cmd.Cmd):
                         a = value
                 if (a):
                     print(a)
-                else :
+                else:
                     print("** no instance found **")
-            else :
+            else:
                 print("** class doesn't exist **")
 
     def do_destroy(self, line):
         """Deletes an instance based on the class name and id"""
-        
+
         a = 0
         args = line.split()
         if (len(args) == 0):
@@ -76,8 +76,8 @@ class HBNBCommand(cmd.Cmd):
         elif (len(args) == 1):
             if (args[0] == "BaseModel"):
                 print("** instance id missing **")
-            else :
-                print("** class doesn't exist **")        
+            else:
+                print("** class doesn't exist **")
         elif (len(args) > 1):
             if (args[0] == "BaseModel"):
                 x = file_storage.FileStorage.all(self)
@@ -88,13 +88,13 @@ class HBNBCommand(cmd.Cmd):
                 if (a):
                     x.pop(id)
                     file_storage.FileStorage.save(self)
-                else :
+                else:
                     print("** no instance found **")
-            else :
+            else:
                 print("** class doesn't exist **")
 
     def do_all(self, line):
-        """Prints all string representation of all instances based or not on the class name"""
+        """Prints all string representation of all instances"""
 
         if (line == ''):
             x = file_storage.FileStorage.all(self)
@@ -104,7 +104,7 @@ class HBNBCommand(cmd.Cmd):
             x = file_storage.FileStorage.all(self)
             for key, value in x.items():
                 print(value)
-        else :
+        else:
             print("** class doesn't exist **")
 
 if __name__ == '__main__':
