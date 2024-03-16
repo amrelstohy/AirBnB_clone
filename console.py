@@ -2,7 +2,7 @@
 """
 console module
 """
-import json
+
 import cmd
 from models import base_model
 from models.engine import file_storage
@@ -33,7 +33,7 @@ class HBNBCommand(cmd.Cmd):
 
         if (args[0] == "BaseModel"):
             x = base_model.BaseModel()
-            x.save()
+            file_storage.FileStorage.save(self)
             print(x.id)
         elif (args[0] == ''):
             print("** class name missing **")
@@ -106,6 +106,32 @@ class HBNBCommand(cmd.Cmd):
                 print(value)
         else:
             print("** class doesn't exist **")
+
+    def do_update(self, line):
+        args = line.split()
+        len1 = len(args)
+        if (len1 == 0):
+            print("** class name missing **")
+            return
+        if (args[0] != "BaseModel"):
+            print("** class doesn't exist **")
+            return
+        if (len1 == 1):
+            print("** instance id missing **")
+            return
+        x = file_storage.FileStorage.all(self)
+        key = args[0] + '.' + args[1]
+        if (key not in x):
+            print("** no instance found **")
+            return
+        if (len1 == 2):
+            print("** attribute name missing **")
+            return
+        if (len1 == 3):
+            print("** value missing **")
+            return
+        x[key].__dict__[args[2]] = args[3]
+        x[key].save()
 
 
 if __name__ == '__main__':
