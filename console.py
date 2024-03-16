@@ -28,7 +28,7 @@ class HBNBCommand(cmd.Cmd):
         """empty line function"""
         pass
 
-    def do_creat(self, *args):
+    def do_create(self, *args):
         """creat new object"""
 
         if (args[0] == "BaseModel"):
