@@ -5,6 +5,7 @@ import unittest
 from models.engine.file_storage import FileStorage
 from models.base_model import BaseModel
 import datetime
+import time
 
 class TestFileStorage(unittest.TestCase):
     """this class tests FileStorage class"""
@@ -26,5 +27,6 @@ class TestFileStorage(unittest.TestCase):
 
     def test_save(self):
         x = BaseModel()
+        time.sleep(0.05)
         x.save()
         self.assertNotEqual(x.created_at, x.updated_at)
