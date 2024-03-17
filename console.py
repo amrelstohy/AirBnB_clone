@@ -92,7 +92,7 @@ class HBNBCommand(cmd.Cmd):
     def do_all(self, line):
         """Prints all string representation of all instances"""
 
-        if (line == '' or line not in HBNBCommand.classes):
+        if (line == '' or line in HBNBCommand.classes):
             x = file_storage.FileStorage.all(self)
             for key, value in x.items():
                 print(value)
