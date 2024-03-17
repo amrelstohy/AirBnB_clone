@@ -15,4 +15,10 @@ class TestFileStorage(unittest.TestCase):
         print(type(FileStorage.all(self)))
         self.assertEqual(type(y), dict)
 
-    
+    def test_file(self):
+        """self.assertEqual(FileStorage.__file_path, None)"""
+        
+        key = "_FileStorage__file_path"
+
+        self.assertEqual(type(FileStorage.__dict__[key]), str)
+        self.assertEqual(FileStorage.__dict__[key], "file.json")
