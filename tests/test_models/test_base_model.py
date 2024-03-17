@@ -15,7 +15,7 @@ class TestBaseModel(unittest.TestCase):
         self.assertEqual(type(x.id), str)
         self.assertEqual(len(x.id), 36)
         self.assertEqual(type(x.created_at), datetime)
-        self.assertEqual(type(x.updated_at, datetime))
+        self.assertEqual(type(x.updated_at), datetime)
 
     
 
