@@ -20,12 +20,9 @@ class HBNBCommand(cmd.Cmd):
     """
 
     classes = {'BaseModel': BaseModel,
-                'User': User,
-                'State': State,
-                'City': City,
-                'Amenity': Amenity,
-                'Place': Place,
-                'Review': Review}
+            'User': User, 'State': State,
+            'City': City, 'Amenity': Amenity,
+            'Place': Place, 'Review': Review}
     prompt = '(hbnb)'
     __file_path = "file.json"
 
