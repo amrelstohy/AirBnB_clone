@@ -7,6 +7,7 @@ from models.base_model import BaseModel
 import datetime
 import time
 
+
 class TestFileStorage(unittest.TestCase):
     """this class tests FileStorage class"""
 
@@ -19,7 +20,7 @@ class TestFileStorage(unittest.TestCase):
 
     def test_file(self):
         """self.assertEqual(FileStorage.__file_path, None)"""
-        
+
         key = "_FileStorage__file_path"
 
         self.assertEqual(type(FileStorage.__dict__[key]), str)
@@ -29,6 +30,5 @@ class TestFileStorage(unittest.TestCase):
         x = BaseModel()
         a = datetime.datetime.utcnow()
         x.save()
-        
+
         self.assertEqual(x.updated_at, a)
-        

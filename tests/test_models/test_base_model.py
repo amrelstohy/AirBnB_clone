@@ -7,6 +7,7 @@ from models.base_model import BaseModel
 import unittest
 from datetime import datetime
 
+
 class TestBaseModel(unittest.TestCase):
     """this class tests BaseModel class"""
 
@@ -17,8 +18,6 @@ class TestBaseModel(unittest.TestCase):
         self.assertEqual(type(x.created_at), datetime)
         self.assertEqual(type(x.updated_at), datetime)
 
-    
-
     def test_name(self):
         x = BaseModel()
         x.name = "amr"
@@ -27,3 +26,4 @@ class TestBaseModel(unittest.TestCase):
 
 if __name__ == '__main__':
     unittest.main()
+    
