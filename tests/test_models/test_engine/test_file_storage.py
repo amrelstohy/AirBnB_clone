@@ -27,7 +27,8 @@ class TestFileStorage(unittest.TestCase):
 
     def test_save(self):
         x = BaseModel()
-        time.sleep(0.05)
+        a = datetime.datetime.utcnow()
         x.save()
-        self.assertNotEqual(x.created_at, x.updated_at)
+        
+        self.assertEqual(x.updated_at, a)
         
