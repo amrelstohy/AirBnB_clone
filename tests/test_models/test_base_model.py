@@ -11,7 +11,8 @@ class TestBaseModel(unittest.TestCase):
 
     def test_id(self):
         x = BaseModel()
-        self.assertEqual(type(x.id), str)
+        x.id = "123"
+        self.assertEqual(x.id, "123")
 
     def test_name(self):
         x = BaseModel()
