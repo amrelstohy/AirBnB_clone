@@ -4,15 +4,17 @@ console module
 """
 
 import cmd
-from models import base_model
+from models.base_model import BaseModel
 from models.engine import file_storage
+from models.user import User
 
 
 class HBNBCommand(cmd.Cmd):
-
     """
     the class of console
     """
+
+    classes = {"BaseModel":BaseModel, "User":User}
     prompt = '(hbnb)'
     __file_path = "file.json"
 
@@ -35,10 +37,10 @@ class HBNBCommand(cmd.Cmd):
         if (len(args) == 0):
             print("** class name missing **")
             return
-        if (args[0] != "BaseModel"):
+        if (args[0] not in HBNBCommand.classes):
             print("** class doesn't exist **")
             return
-        x = base_model.BaseModel()
+        x = HBNBCommand.classes[args[0]]()
         file_storage.FileStorage.save(self)
         print(x.id)
 
@@ -51,7 +53,7 @@ class HBNBCommand(cmd.Cmd):
         if (len1 == 0):
             print("** class name missing **")
             return
-        if (args[0] != "BaseModel"):
+        if (args[0] not in HBNBCommand.classes):
             print("** class doesn't exist **")
             return
         if (len1 == 1):
@@ -73,7 +75,7 @@ class HBNBCommand(cmd.Cmd):
         if (len1 == 0):
             print("** class name missing **")
             return
-        if (args[0] != "BaseModel"):
+        if (args[0] not in HBNBCommand.classes):
             print("** class doesn't exist **")
             return
         if (len1 == 1):
@@ -90,7 +92,7 @@ class HBNBCommand(cmd.Cmd):
     def do_all(self, line):
         """Prints all string representation of all instances"""
 
-        if (line == '' or line == "BaseModel"):
+        if (line == '' or line not in HBNBCommand.classes):
             x = file_storage.FileStorage.all(self)
             for key, value in x.items():
                 print(value)
@@ -105,7 +107,7 @@ class HBNBCommand(cmd.Cmd):
         if (len1 == 0):
             print("** class name missing **")
             return
-        if (args[0] != "BaseModel"):
+        if (args[0] not in HBNBCommand.classes):
             print("** class doesn't exist **")
             return
         if (len1 == 1):
