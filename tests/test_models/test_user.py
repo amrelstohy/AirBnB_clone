@@ -6,6 +6,7 @@ this module tests user.py
 from models.user import User
 import unittest
 
+
 class TestUser(unittest.TestCase):
     """this class test User class"""
 

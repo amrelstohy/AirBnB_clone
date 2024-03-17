@@ -6,6 +6,7 @@ this module tests place.py
 from models.place import Place
 import unittest
 
+
 class TestPlace(unittest.TestCase):
     """this class test Place class"""
 

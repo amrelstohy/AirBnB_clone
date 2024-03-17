@@ -6,7 +6,6 @@ This module is for users
 from models.base_model import BaseModel
 
 
-
 class User(BaseModel):
     """
     This class is for users

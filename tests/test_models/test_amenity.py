@@ -6,6 +6,7 @@ this module tests amenity.py
 from models.amenity import Amenity
 import unittest
 
+
 class TestAmenity(unittest.TestCase):
     """this class test Amenity class"""
 

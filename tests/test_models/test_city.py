@@ -6,6 +6,7 @@ this module tests city.py
 from models.city import City
 import unittest
 
+
 class TestCity(unittest.TestCase):
     """this class test City class"""
 
