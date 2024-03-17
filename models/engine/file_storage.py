@@ -64,8 +64,9 @@ class FileStorage():
                 data = json.load(jsonfile2)
                 if isinstance(data, dict):
                     for key, value in data.items():
-                        cls = FileStorage.classes[key.split(".")[0]]()
-                        self.__objects[key] = cls
+                        if (key.split(".")[0] in FileStorage.classes):
+                            obj = FileStorage.classes[key.split(".")[0]](**value)
+                            self.__objects[key] = obj
                 else:
                     pass
         else:

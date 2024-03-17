@@ -4,8 +4,7 @@ This module is for users
 
 """
 from models.base_model import BaseModel
-from models.engine.file_storage import FileStorage
-import datetime
+
 
 
 class User(BaseModel):

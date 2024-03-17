@@ -1,1 +1,1 @@
-#!/usr/bin/python3
+my_user.save()
