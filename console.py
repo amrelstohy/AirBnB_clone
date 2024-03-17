@@ -28,79 +28,69 @@ class HBNBCommand(cmd.Cmd):
         """empty line function"""
         pass
 
-    def do_create(self, *args):
+    def do_create(self, line):
         """creat new object"""
 
-        if (args[0] == "BaseModel"):
-            x = base_model.BaseModel()
-            file_storage.FileStorage.save(self)
-            print(x.id)
-        elif (args[0] == ''):
+        args = line.split()
+        if (len(args) == 0):
             print("** class name missing **")
-        else:
+            return
+        if (args[0] != "BaseModel"):
             print("** class doesn't exist **")
+            return
+        x = base_model.BaseModel()
+        file_storage.FileStorage.save(self)
+        print(x.id)
 
     def do_show(self, line):
         """Prints the string representation of an instance"""
 
-        a = 0
         args = line.split()
-        if (len(args) == 0):
+        len1 = len(args)
+
+        if (len1 == 0):
             print("** class name missing **")
-        elif (len(args) == 1):
-            if (args[0] == "BaseModel"):
-                print("** instance id missing **")
-            else:
-                print("** class doesn't exist **")
-        elif (len(args) > 1):
-            if (args[0] == "BaseModel"):
-                x = file_storage.FileStorage.all(self)
-                id = args[0] + '.' + args[1]
-                for key, value in x.items():
-                    if (key == id):
-                        a = value
-                if (a):
-                    print(a)
-                else:
-                    print("** no instance found **")
-            else:
-                print("** class doesn't exist **")
+            return
+        if (args[0] != "BaseModel"):
+            print("** class doesn't exist **")
+            return
+        if (len1 == 1):
+            print("** instance id missing **")
+            return
+        key = args[0] + '.' + args[1]
+        objs = file_storage.FileStorage.all(self)
+        if (key not in objs):
+            print("** no instance found **")
+            return
+        print(objs[key])
 
     def do_destroy(self, line):
         """Deletes an instance based on the class name and id"""
 
-        a = 0
         args = line.split()
-        if (len(args) == 0):
+        len1 = len(args)
+
+        if (len1 == 0):
             print("** class name missing **")
-        elif (len(args) == 1):
-            if (args[0] == "BaseModel"):
-                print("** instance id missing **")
-            else:
-                print("** class doesn't exist **")
-        elif (len(args) > 1):
-            if (args[0] == "BaseModel"):
-                x = file_storage.FileStorage.all(self)
-                id = args[0] + '.' + args[1]
-                for key, value in x.items():
-                    if (key == id):
-                        a = value
-                if (a):
-                    x.pop(id)
-                    file_storage.FileStorage.save(self)
-                else:
-                    print("** no instance found **")
-            else:
-                print("** class doesn't exist **")
+            return
+        if (args[0] != "BaseModel"):
+            print("** class doesn't exist **")
+            return
+        if (len1 == 1):
+            print("** instance id missing **")
+            return
+        key = args[0] + '.' + args[1]
+        objs = file_storage.FileStorage.all(self)
+        if (key not in objs):
+            print("** no instance found **")
+            return
+        objs.pop(key)
+        file_storage.FileStorage.save(self)
 
     def do_all(self, line):
         """Prints all string representation of all instances"""
 
-        if (line == ''):
-            x = file_storage.FileStorage.all(self)
-            for key, value in x.items():
-                print(value)
-        elif (line == "BaseModel"):
+        if (line == '' or line == "BaseModel"):
             x = file_storage.FileStorage.all(self)
             for key, value in x.items():
                 print(value)
