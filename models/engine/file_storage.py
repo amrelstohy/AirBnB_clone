@@ -26,13 +26,9 @@ class FileStorage():
     """
     __file_path = "file.json"
     __objects = {}
-    classes = {'BaseModel': BaseModel,
-                'User': User,
-                'State': State,
-                'City': City,
-                'Amenity': Amenity,
-                'Place': Place,
-                'Review': Review}
+    classes = {'BaseModel': BaseModel, 'User': User, 'City': City,
+               'Place': Place, 'Amenity': Amenity, 'Review': Review,
+               'State': State}
 
     def __init__(self):
         pass
