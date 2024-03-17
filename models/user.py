@@ -5,6 +5,7 @@ This module is for users
 """
 from models.base_model import BaseModel
 from models.engine.file_storage import FileStorage
+import datetime
 
 
 class User(BaseModel):
@@ -18,9 +19,9 @@ class User(BaseModel):
     first_name = ""
     last_name = ""
 
-    def __init__(self):
+    def __init__(self, *args, **kwargs):
         """
         initiate the user and
         creates a basemodel object
         """
-        super().__init__()
+        super().__init__(**kwargs)

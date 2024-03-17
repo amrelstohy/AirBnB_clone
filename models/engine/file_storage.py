@@ -7,6 +7,7 @@ the json files
 """
 
 from models.base_model import BaseModel
+from models.user import User
 import json
 import os
 
@@ -20,6 +21,7 @@ class FileStorage():
     """
     __file_path = "file.json"
     __objects = {}
+    classes = {'BaseModel': BaseModel, 'User': User}
 
     def __init__(self):
         pass
@@ -62,8 +64,8 @@ class FileStorage():
                 data = json.load(jsonfile2)
                 if isinstance(data, dict):
                     for key, value in data.items():
-                        obj = BaseModel(**value)
-                        self.__objects[key] = obj
+                        cls = FileStorage.classes[key.split(".")[0]]()
+                        self.__objects[key] = cls
                 else:
                     pass
         else:
