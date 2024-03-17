@@ -42,7 +42,6 @@ class HBNBCommand(cmd.Cmd):
         file_storage.FileStorage.save(self)
         print(x.id)
 
-
     def do_show(self, line):
         """Prints the string representation of an instance"""
 
@@ -64,7 +63,6 @@ class HBNBCommand(cmd.Cmd):
             print("** no instance found **")
             return
         print(objs[key])
-
 
     def do_destroy(self, line):
         """Deletes an instance based on the class name and id"""
@@ -88,7 +86,6 @@ class HBNBCommand(cmd.Cmd):
             return
         objs.pop(key)
         file_storage.FileStorage.save(self)
-
 
     def do_all(self, line):
         """Prints all string representation of all instances"""
