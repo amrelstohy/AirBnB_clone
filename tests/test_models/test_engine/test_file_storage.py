@@ -4,6 +4,7 @@
 import unittest
 from models.engine.file_storage import FileStorage
 from models.base_model import BaseModel
+import datetime
 
 class TestFileStorage(unittest.TestCase):
     """this class tests FileStorage class"""
@@ -22,3 +23,8 @@ class TestFileStorage(unittest.TestCase):
 
         self.assertEqual(type(FileStorage.__dict__[key]), str)
         self.assertEqual(FileStorage.__dict__[key], "file.json")
+
+    def test_save(self):
+        x = BaseModel()
+        x.save()
+        self.assertEqual(type(x.updated_at), type(datetime.datetime.now()))
