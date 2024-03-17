@@ -35,7 +35,7 @@ class BaseModel():
                     self.__dict__[k] = v
         else:
             self.id = str(uuid4())
-            self.created_at = datetime.datetime.now()
+            self.created_at = datetime.datetime.utcnow()
             self.updated_at = self.created_at
             models.storage.new(self)
 
@@ -52,7 +52,7 @@ class BaseModel():
         function responsible for updates the public instance
         attribute updated_at with the current datetime
         """
-        self.updated_at = datetime.datetime.now()
+        self.updated_at = datetime.datetime.utcnow()
         models.storage.save()
 
     def to_dict(self):
