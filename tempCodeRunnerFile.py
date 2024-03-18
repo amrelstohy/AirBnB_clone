@@ -1,1 +1,1 @@
-my_user.save()
+class name missing
