@@ -6,7 +6,6 @@ This module is for users
 from models.base_model import BaseModel
 
 
-
 class Place(BaseModel):
     """
     This class is for users
@@ -24,7 +23,6 @@ class Place(BaseModel):
     latitude = 0.0
     longitude = 0.0
     amenity_ids = []
-
 
     def __init__(self, *args, **kwargs):
         """

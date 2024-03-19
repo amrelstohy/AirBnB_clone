@@ -26,13 +26,9 @@ class FileStorage():
     """
     __file_path = "file.json"
     __objects = {}
-    classes = {'BaseModel': BaseModel,
-                'User': User,
-                'State': State,
-                'City': City,
-                'Amenity': Amenity,
-                'Place': Place,
-                'Review': Review}
+    classes = {'BaseModel': BaseModel, 'User': User, 'City': City,
+               'Place': Place, 'Amenity': Amenity, 'Review': Review,
+               'State': State}
 
     def __init__(self):
         pass
@@ -75,8 +71,9 @@ class FileStorage():
                 data = json.load(jsonfile2)
                 if isinstance(data, dict):
                     for key, value in data.items():
-                        if (key.split(".")[0] in FileStorage.classes):
-                            obj = FileStorage.classes[key.split(".")[0]](**value)
+                        cls_name = key.split(".")[0]
+                        if (cls_name in FileStorage.classes):
+                            obj = FileStorage.classes[cls_name](**value)
                             self.__objects[key] = obj
                 else:
                     pass

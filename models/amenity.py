@@ -6,7 +6,6 @@ This module is for users
 from models.base_model import BaseModel
 
 
-
 class Amenity(BaseModel):
     """
     This class is for users

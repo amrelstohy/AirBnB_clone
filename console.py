@@ -3,9 +3,15 @@ console module
 """
 
 import cmd
+import re
 from models.base_model import BaseModel
 from models.engine import file_storage
 from models.user import User
+from models.amenity import Amenity
+from models.city import City
+from models.state import State
+from models.place import Place
+from models.review import Review
 
 
 class HBNBCommand(cmd.Cmd):
@@ -13,7 +19,9 @@ class HBNBCommand(cmd.Cmd):
     the class of console
     """
 
-    classes = {"BaseModel":BaseModel, "User":User}
+    classes = {'BaseModel': BaseModel, 'User': User, 'City': City,
+               'Place': Place, 'Amenity': Amenity, 'Review': Review,
+               'State': State}
     prompt = '(hbnb)'
     __file_path = "file.json"
 
@@ -33,15 +41,30 @@ class HBNBCommand(cmd.Cmd):
         """creat new object"""
 
         args = line.split()
-        if (len(args) == 0):
+        len_line = len(args)
+        if (len_line == 0):
             print("** class name missing **")
             return
         if (args[0] not in HBNBCommand.classes):
             print("** class doesn't exist **")
             return
         x = HBNBCommand.classes[args[0]]()
-        file_storage.FileStorage.save(self)
         print(x.id)
+        if (len_line == 1):
+            return
+        for attr in args[1:]:
+            param = attr.split("=")
+            if (len(param) != 2):
+                return
+            if (param[1].isnumeric()):
+                x.__dict__[param[0]] = int(param[1])
+            elif(re.match(r'^[0-9]+\.[0-9]+$',param[1]) is not None):
+                x.__dict__[param[0]] = float(param[1])
+            elif (param[1][0] == '"' and param[1][-1] == '"'):
+                param[1] = param[1].replace('_', ' ')
+                param[1] = param[1][1:-1]
+                x.__dict__[param[0]] = param[1]
+        file_storage.FileStorage.save(self)
 
     def do_show(self, line):
         """Prints the string representation of an instance"""
